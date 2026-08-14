@@ -1,0 +1,34 @@
+.playground-saved-toast {
+  margin: 0 14px 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  background: rgba(45, 212, 191, 0.12);
+  border: 1px solid rgba(45, 212, 191, 0.4);
+  color: var(--accent-teal);
+}
+
+.tag-reference-body {
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tag-reference-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+  align-items: baseline;
+}
+
+.tag-reference-row code {
+  color: var(--accent-teal);
+  white-space: nowrap;
+}
+
+.tag-reference-row span {
+  color: var(--text-dim);
+}

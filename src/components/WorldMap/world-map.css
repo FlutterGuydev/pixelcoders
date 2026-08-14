@@ -1,0 +1,185 @@
+.world-map {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 28px 24px 60px;
+}
+
+.world-map-intro {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.world-map-intro h2 {
+  margin: 0 0 6px;
+  font-size: 22px;
+}
+
+.world-map-intro p {
+  color: var(--text-dim);
+  margin: 0;
+  font-size: 14px;
+}
+
+.new-badge-banner {
+  max-width: 480px;
+  margin: 0 auto 20px;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: var(--accent-gold);
+  border-radius: 8px;
+  padding: 10px 16px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.wing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.wing-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  position: relative;
+}
+
+.wing-card.locked {
+  opacity: 0.55;
+}
+
+.wing-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.wing-card-icon {
+  font-size: 30px;
+}
+
+.wing-card-head h3 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.wing-card-head span {
+  display: block;
+  color: var(--accent-teal);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.wing-card-desc {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin: 0 0 16px;
+}
+
+.wing-lock-note {
+  font-size: 13px;
+  color: var(--accent-gold);
+  margin-bottom: 16px;
+}
+
+.progress-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--panel-alt);
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-teal);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.progress-label {
+  font-size: 12px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.level-chip-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.level-chip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel-alt);
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.level-chip.done {
+  border-color: rgba(45, 212, 191, 0.4);
+  color: var(--accent-teal);
+}
+
+.level-chip.locked-chip {
+  color: var(--text-dim);
+  cursor: not-allowed;
+}
+
+.level-chip .chip-status {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.playground-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 20px;
+  padding: 20px 22px;
+  background: linear-gradient(135deg, rgba(45, 212, 191, 0.1), rgba(251, 191, 36, 0.08));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.playground-card:hover {
+  border-color: var(--accent-teal);
+}
+
+.playground-card-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.playground-card h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.playground-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.playground-card-cta {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-teal);
+  white-space: nowrap;
+}

@@ -1,0 +1,27 @@
+.dungeon-pane.basics-pane {
+  align-items: stretch;
+}
+
+.basics-preview-block {
+  width: 100%;
+}
+
+.basics-preview-block h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent-teal);
+  margin: 0 0 8px;
+}
+
+.basics-page-caption {
+  color: var(--text-dim);
+  font-size: 13px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.basics-live-preview {
+  width: 100%;
+  min-height: 160px;
+}
