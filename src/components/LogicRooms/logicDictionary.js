@@ -1,0 +1,225 @@
+// Scoped translation object for the Logic Rooms module only — kept
+// separate from the site-wide LanguageContext (src/i18n) because it adds
+// English, which the rest of the app doesn't support. Switching language
+// here never touches the global ru/uz preference used elsewhere.
+export const LOGIC_DICT = {
+  uz: {
+    brand: 'Mantiq xonalari',
+    common: {
+      back: '← Xaritaga',
+      next: 'Keyingisi →',
+      finish: 'Yakunlash',
+      continueBtn: 'Davom etish →',
+      round: 'Bosqich',
+      solved: 'topildi',
+      goalHeading: 'Maqsad',
+      result: 'Natija',
+    },
+    bugHunt: {
+      label: 'Xato ovi',
+      goalBody: 'Har bir parchada bitta buzilgan qator bor. Uni toping va bosing.',
+      feedback: {
+        waiting: { title: 'Xatoni qidiring', subtitle: 'Buzilgan qatorni bosing.' },
+        correct: { title: 'Ajoyib!', subtitle: 'Xato topildi va tuzatildi.' },
+        incorrect: { title: 'Bu emas', subtitle: 'Yana bir bor urinib ko‘ring.' },
+        complete: { title: 'Barcha xatolar topildi!', subtitle: 'Ajoyib kuzatuvchanlik.' },
+      },
+    },
+    predict: {
+      label: 'Natijani top',
+      goalBody: 'Kodni o‘qi, javobni tanla, so‘ng Ishga tushirish tugmasini bos.',
+      yourAnswer: 'Sening javobing',
+      correctAnswer: 'To‘g‘ri javob',
+      run: 'Ishga tushirish ▶',
+      feedback: {
+        waiting: { title: 'Bashorat qil', subtitle: 'Javobni tanla, keyin ishga tushir.' },
+        correct: { title: 'Aynan shu!', subtitle: 'Sen kodni to‘g‘ri o‘qiding.' },
+        incorrect: { title: 'Yaqin edi', subtitle: 'Haqiqiy natijani solishtirib ko‘r.' },
+        complete: { title: 'Barcha bosqichlar tugadi!', subtitle: 'Kod o‘qish mahoratingga qoyilman.' },
+      },
+    },
+    codeSort: {
+      label: 'Tartibni yig‘',
+      goalBody: 'Jonli ko‘rinish to‘g‘ri bo‘lguncha qatorlarni torting.',
+      resultLabel: 'Natija',
+      feedback: {
+        waiting: { title: 'Qatorlarni torting', subtitle: 'To‘g‘ri tartibni toping.' },
+        correct: { title: 'Tartib to‘g‘ri!', subtitle: 'Ajoyib, davom et.' },
+        incorrect: { title: 'Hali emas', subtitle: 'Qatorlarni qayta torting.' },
+        complete: { title: 'Barcha parchalar tartiblandi!', subtitle: 'Tartib muhimligini isbotlading.' },
+      },
+    },
+    pattern: {
+      label: 'Naqshni top',
+      goalBody: 'Naqsh qoidasini top va uning davomini tanla.',
+      whatNext: 'Keyingisi nima?',
+      feedback: {
+        waiting: { title: 'Naqshni o‘rgan', subtitle: 'Davomini tanla.' },
+        correct: { title: 'Aniq topding!', subtitle: 'Naqsh davom etadi.' },
+        incorrect: { title: 'Boshqa variant', subtitle: 'Qoidani qayta ko‘rib chiq.' },
+        complete: { title: 'Barcha naqshlar topildi!', subtitle: 'Naqshlarni his qilasan.' },
+      },
+    },
+    gate: {
+      label: 'Richaglar xonasi',
+      goalBody: 'Eshik ustidagi shartni bajaradigan holatga richaglarni o‘tkaz.',
+      and: 'VA',
+      or: 'YOKI',
+      combo: 'VA + YOKI',
+      feedback: {
+        waiting: { title: 'Shartni bajar', subtitle: 'Richaglarni almashtirib ko‘r.' },
+        correct: { title: 'Eshik ochildi!', subtitle: 'Qahramon ichkariga kirdi.' },
+        incorrect: { title: 'Shartni bajar', subtitle: 'Richaglarni almashtirib ko‘r.' },
+        complete: { title: 'Barcha xonalar ochildi!', subtitle: 'Mantiq ustasi bo‘lding.' },
+      },
+    },
+  },
+  ru: {
+    brand: 'Логические комнаты',
+    common: {
+      back: '← К карте',
+      next: 'Далее →',
+      finish: 'Завершить',
+      continueBtn: 'Продолжить →',
+      round: 'Раунд',
+      solved: 'найдено',
+      goalHeading: 'Цель',
+      result: 'Результат',
+    },
+    bugHunt: {
+      label: 'Охота на баг',
+      goalBody: 'В каждом фрагменте спрятана одна сломанная строка. Найди и кликни на неё.',
+      feedback: {
+        waiting: { title: 'Ищи баг', subtitle: 'Кликни на сломанную строку.' },
+        correct: { title: 'Отлично!', subtitle: 'Баг найден и исправлен.' },
+        incorrect: { title: 'Не то', subtitle: 'Попробуй ещё раз.' },
+        complete: { title: 'Все баги найдены!', subtitle: 'Отличный глаз.' },
+      },
+    },
+    predict: {
+      label: 'Угадай результат',
+      goalBody: 'Прочитай код, выбери ответ, затем нажми Запустить.',
+      yourAnswer: 'Твой ответ',
+      correctAnswer: 'Правильный ответ',
+      run: 'Запустить ▶',
+      feedback: {
+        waiting: { title: 'Предскажи', subtitle: 'Выбери ответ, потом запусти.' },
+        correct: { title: 'Именно так!', subtitle: 'Ты верно прочитал код.' },
+        incorrect: { title: 'Почти', subtitle: 'Сравни с настоящим результатом.' },
+        complete: { title: 'Все раунды пройдены!', subtitle: 'Отличное чтение кода.' },
+      },
+    },
+    codeSort: {
+      label: 'Собери порядок',
+      goalBody: 'Перетаскивай строки, пока живой предпросмотр не станет правильным.',
+      resultLabel: 'Результат',
+      feedback: {
+        waiting: { title: 'Перетаскивай строки', subtitle: 'Найди правильный порядок.' },
+        correct: { title: 'Порядок верный!', subtitle: 'Отлично, продолжай.' },
+        incorrect: { title: 'Ещё не то', subtitle: 'Перетащи строки ещё раз.' },
+        complete: { title: 'Все фрагменты собраны!', subtitle: 'Ты доказал, что порядок важен.' },
+      },
+    },
+    pattern: {
+      label: 'Найди узор',
+      goalBody: 'Разгадай правило узора и выбери, что идёт дальше.',
+      whatNext: 'Что дальше?',
+      feedback: {
+        waiting: { title: 'Изучи узор', subtitle: 'Выбери продолжение.' },
+        correct: { title: 'Точно в цель!', subtitle: 'Узор продолжается.' },
+        incorrect: { title: 'Другой вариант', subtitle: 'Пересмотри правило.' },
+        complete: { title: 'Все узоры разгаданы!', subtitle: 'Ты чувствуешь закономерности.' },
+      },
+    },
+    gate: {
+      label: 'Комната рычагов',
+      goalBody: 'Переключай рычаги так, чтобы выполнить условие над дверью.',
+      and: 'И',
+      or: 'ИЛИ',
+      combo: 'И + ИЛИ',
+      feedback: {
+        waiting: { title: 'Выполни условие', subtitle: 'Попробуй переключить рычаги.' },
+        correct: { title: 'Дверь открыта!', subtitle: 'Герой прошёл внутрь.' },
+        incorrect: { title: 'Выполни условие', subtitle: 'Попробуй переключить рычаги.' },
+        complete: { title: 'Все комнаты пройдены!', subtitle: 'Ты мастер логики.' },
+      },
+    },
+  },
+  en: {
+    brand: 'Logic Rooms',
+    common: {
+      back: '← Back to Map',
+      next: 'Next →',
+      finish: 'Finish',
+      continueBtn: 'Continue →',
+      round: 'Round',
+      solved: 'solved',
+      goalHeading: 'Goal',
+      result: 'Result',
+    },
+    bugHunt: {
+      label: 'Bug Hunt',
+      goalBody: 'Each snippet hides one broken line. Find it and click it.',
+      feedback: {
+        waiting: { title: 'Find the bug', subtitle: 'Click the broken line.' },
+        correct: { title: 'Nice catch!', subtitle: 'Bug found and squashed.' },
+        incorrect: { title: 'Not this one', subtitle: 'Give it another try.' },
+        complete: { title: 'All bugs squashed!', subtitle: 'Great eye for detail.' },
+      },
+    },
+    predict: {
+      label: 'Predict the Output',
+      goalBody: 'Read the code, pick your answer, then hit Run.',
+      yourAnswer: 'Your answer',
+      correctAnswer: 'Correct answer',
+      run: 'Run ▶',
+      feedback: {
+        waiting: { title: 'Make a prediction', subtitle: 'Pick an answer, then run it.' },
+        correct: { title: 'Nailed it!', subtitle: 'You read the code correctly.' },
+        incorrect: { title: 'Close call', subtitle: 'Compare it with the real result.' },
+        complete: { title: 'All rounds complete!', subtitle: 'Great code-reading skills.' },
+      },
+    },
+    codeSort: {
+      label: 'Code Sort',
+      goalBody: 'Drag the lines around until the live preview looks right.',
+      resultLabel: 'Result',
+      feedback: {
+        waiting: { title: 'Drag the lines', subtitle: 'Find the right order.' },
+        correct: { title: 'Order locked in!', subtitle: 'Nice work, keep going.' },
+        incorrect: { title: 'Not yet', subtitle: 'Keep dragging the lines.' },
+        complete: { title: 'All snippets sorted!', subtitle: 'You proved order matters.' },
+      },
+    },
+    pattern: {
+      label: 'Pattern Puzzle',
+      goalBody: 'Figure out the pattern’s rule and pick what comes next.',
+      whatNext: 'What comes next?',
+      feedback: {
+        waiting: { title: 'Study the pattern', subtitle: 'Pick the continuation.' },
+        correct: { title: 'Spot on!', subtitle: 'The pattern continues.' },
+        incorrect: { title: 'Different rule', subtitle: 'Rethink the pattern.' },
+        complete: { title: 'All patterns solved!', subtitle: 'You see patterns clearly.' },
+      },
+    },
+    gate: {
+      label: 'Logic Gate Rooms',
+      goalBody: 'Toggle the levers to satisfy the condition above the door.',
+      and: 'AND',
+      or: 'OR',
+      combo: 'AND + OR',
+      feedback: {
+        waiting: { title: 'Satisfy the condition', subtitle: 'Try toggling the levers.' },
+        correct: { title: 'Door unlocked!', subtitle: 'The hero walked through.' },
+        incorrect: { title: 'Satisfy the condition', subtitle: 'Try toggling the levers.' },
+        complete: { title: 'All rooms cleared!', subtitle: 'You’re a logic master.' },
+      },
+    },
+  },
+};
+
+export const LOGIC_LANGUAGES = [
+  { code: 'uz', label: 'UZ' },
+  { code: 'ru', label: 'RU' },
+  { code: 'en', label: 'EN' },
+];

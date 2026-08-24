@@ -93,8 +93,38 @@ export function PlayerProvider({ children }) {
     return { newBadge: true };
   };
 
+  const DUEL_WIN_XP = 40;
+
+  /**
+   * Awards a flat XP bonus for winning a Code Duel, plus the one-time
+   * "code-duelist" badge on the player's first win. Duels are repeatable
+   * and aren't tied to a track/level id, so — like savePlaygroundWork —
+   * this can't go through completeLevel; it mirrors that same shape.
+   */
+  const recordDuelWin = () => {
+    if (!player) return null;
+
+    const fromLevel = player.playerLevel;
+    const totalXP = player.totalXP + DUEL_WIN_XP;
+    const toLevel = playerLevelForXp(totalXP);
+    const leveledUp = toLevel > fromLevel;
+    const newBadges = player.badges.includes('code-duelist') ? [] : ['code-duelist'];
+
+    const nextPlayer = {
+      ...player,
+      totalXP,
+      playerLevel: toLevel,
+      badges: [...player.badges, ...newBadges],
+    };
+
+    savePlayer(nextPlayer);
+    setPlayer(nextPlayer);
+
+    return { xpAwarded: DUEL_WIN_XP, leveledUp, fromLevel, toLevel, newBadges };
+  };
+
   const value = useMemo(
-    () => ({ player, login, logout, completeLevel, savePlaygroundWork }),
+    () => ({ player, login, logout, completeLevel, savePlaygroundWork, recordDuelWin }),
     [player]
   );
 

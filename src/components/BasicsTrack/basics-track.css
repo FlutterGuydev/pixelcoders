@@ -4,6 +4,10 @@
 
 .basics-preview-block {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
 }
 
 .basics-preview-block h3 {
@@ -23,5 +27,6 @@
 
 .basics-live-preview {
   width: 100%;
-  min-height: 160px;
+  min-height: 240px;
+  flex: 1;
 }

@@ -18,6 +18,9 @@ export function defaultPlayer(displayName = 'Guest Adventurer') {
       html: { levelsCompleted: [], unlocked: false },
       cssBasics: { levelsCompleted: [], unlocked: false },
       css: { levelsCompleted: [], unlocked: false },
+      // Logic Rooms teaches thinking skills, not syntax, so it's open
+      // from the start rather than gated behind a coding track.
+      logic: { levelsCompleted: [], unlocked: true },
     },
     cosmetics: { unlocked: ['default'], equipped: 'default' },
   };
@@ -35,6 +38,9 @@ export function loadPlayer() {
     }
     if (!parsed.tracks.cssBasics) {
       parsed.tracks.cssBasics = { levelsCompleted: [], unlocked: false };
+    }
+    if (!parsed.tracks.logic) {
+      parsed.tracks.logic = { levelsCompleted: [], unlocked: true };
     }
     parsed.tracks = computeTrackUnlocks(parsed.tracks, TRACK_LEVEL_IDS);
     return parsed;

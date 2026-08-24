@@ -83,7 +83,7 @@ export default function BasicsLevelPage({ level }) {
 
   return (
     <div>
-      <HeaderBar wingLabel={tr(level.wingLabel)} title={tr(level.title)} backTo="/map" />
+      <HeaderBar wingLabel={tr(level.wingLabel)} title={tr(level.title)} backTo={`/tracks/${level.trackId}`} />
 
       {showGoals && (
         <GoalsModal

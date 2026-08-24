@@ -42,7 +42,7 @@ export const TRACK_LEVEL_IDS = {
     'basics-37',
     'basics-38',
   ],
-  html: ['html-1', 'html-2', 'html-3'],
+  html: ['html-open', 'html-1', 'html-2', 'html-3'],
   cssBasics: [
     'css-basics-1',
     'css-basics-2',
@@ -84,6 +84,7 @@ export const TRACK_LEVEL_IDS = {
     'css-basics-38',
   ],
   css: ['css-1', 'css-2', 'css-3'],
+  logic: ['logic-1', 'logic-2', 'logic-3', 'logic-4', 'logic-5'],
 };
 
 export const TRACKS = {
@@ -147,6 +148,12 @@ export const TRACKS = {
       uz: 'Bu bo’limda hech narsa yo’q, toki siz uning uchun teg yozmaguningizcha.',
     },
     levels: [
+      {
+        id: 'html-open',
+        title: { ru: 'Открытый урок: Построй дверь', uz: 'Ochiq dars: Eshikni yasash' },
+        built: true,
+        openLesson: true,
+      },
       { id: 'html-1', title: { ru: 'Построй дверь', uz: 'Eshikni yasash' }, built: true },
       { id: 'html-2', title: { ru: 'Сломанный мост', uz: 'Buzilgan ko’prik' }, built: true },
       { id: 'html-3', title: { ru: 'Вложенные комнаты', uz: 'Ichma-ich xonalar' }, built: true },
@@ -215,6 +222,23 @@ export const TRACKS = {
       { id: 'css-1', title: { ru: 'Зажги факелы', uz: 'Mashʻallarni yoq' }, built: false },
       { id: 'css-2', title: { ru: 'Подбери руну', uz: 'Runani moslashtir' }, built: false },
       { id: 'css-3', title: { ru: 'Сдвинь статую', uz: 'Haykalni suri' }, built: false },
+    ],
+  },
+  logic: {
+    id: 'logic',
+    name: { ru: 'Логические комнаты', uz: 'Mantiq xonalari' },
+    subtitle: { ru: 'Логика', uz: 'Mantiq' },
+    icon: '🧠',
+    description: {
+      ru: 'Пять коротких игр на логику и внимательность — без единой строчки кода.',
+      uz: "Kod yozmasdan — mantiq va diqqat uchun beshta qisqa o'yin.",
+    },
+    levels: [
+      { id: 'logic-1', title: { ru: 'Охота на баг', uz: 'Xato ovi' }, built: true },
+      { id: 'logic-2', title: { ru: 'Угадай результат', uz: 'Natijani top' }, built: true },
+      { id: 'logic-3', title: { ru: 'Собери порядок', uz: 'Tartibni yig‘' }, built: true },
+      { id: 'logic-4', title: { ru: 'Найди узор', uz: 'Naqshni top' }, built: true },
+      { id: 'logic-5', title: { ru: 'Комната рычагов', uz: 'Richaglar xonasi' }, built: true },
     ],
   },
 };

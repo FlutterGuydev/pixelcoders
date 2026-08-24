@@ -608,6 +608,24 @@ export const BADGE_DEFINITIONS = [
     },
     icon: '📅',
   },
+  {
+    id: 'code-duelist',
+    name: { ru: 'Кодовый дуэлянт', uz: 'Kod duelchisi' },
+    description: {
+      ru: 'Выиграй свою первую дуэль против Байта.',
+      uz: 'Bayt ustidan birinchi duelingni yut.',
+    },
+    icon: '⚔️',
+  },
+  {
+    id: 'sharp-mind',
+    name: { ru: 'Острый ум', uz: 'O‘tkir aql' },
+    description: {
+      ru: 'Пройди все пять Логических комнат.',
+      uz: 'Barcha beshta Mantiq xonasini tugat.',
+    },
+    icon: '🧠',
+  },
 ];
 
 /**
@@ -657,6 +675,7 @@ export function evaluateNewBadges(player, event, trackLevelIds) {
 
   if (trackComplete('html')) award('gatekeeper');
   if (trackComplete('css')) award('vault-breaker');
+  if (trackComplete('logic')) award('sharp-mind');
   if (player.consecutiveNoHintSolves >= 5) award('no-hints-needed');
   if (event.failedAttempts >= 3) award('comeback-kid');
   if (player.streak.current >= 7) award('7-day-streak');

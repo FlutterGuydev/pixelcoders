@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import { usePlayer } from './context/PlayerContext';
 import LoginPage from './components/Auth/LoginPage';
 import WorldMap from './components/WorldMap/WorldMap';
+import TrackPath from './components/TrackPath/TrackPath';
 import ProfilePage from './components/Profile/ProfilePage';
 import LevelUpOverlay from './components/LevelUp/LevelUpOverlay';
 import HtmlLevelPage from './components/HtmlTrack/HtmlLevelPage';
@@ -11,6 +12,15 @@ import HtmlRoomsViewport from './components/HtmlTrack/HtmlRoomsViewport';
 import BasicsLevelPage from './components/BasicsTrack/BasicsLevelPage';
 import PlaygroundPage from './components/Playground/PlaygroundPage';
 import CertificatePage from './components/Exam/CertificatePage';
+import OpenLessonPage from './components/OpenLesson/OpenLessonPage';
+import { htmlOpenLesson } from './data/levels/htmlOpenLesson';
+import DuelLobbyPage from './components/CodeDuel/DuelLobbyPage';
+import DuelPage from './components/CodeDuel/DuelPage';
+import BugHuntPage from './components/LogicRooms/BugHuntPage';
+import PredictOutputPage from './components/LogicRooms/PredictOutputPage';
+import CodeSortPage from './components/LogicRooms/CodeSortPage';
+import PatternPuzzlePage from './components/LogicRooms/PatternPuzzlePage';
+import LogicGatePage from './components/LogicRooms/LogicGatePage';
 import { htmlLevel1 } from './data/levels/htmlLevel1';
 import { htmlLevel2 } from './data/levels/htmlLevel2';
 import { htmlLevel3 } from './data/levels/htmlLevel3';
@@ -198,6 +208,14 @@ export default function App() {
         }
       />
       <Route
+        path="/tracks/:trackId"
+        element={
+          <RequireAuth>
+            <TrackPath />
+          </RequireAuth>
+        }
+      />
+      <Route
         path="/profile"
         element={
           <RequireAuth>
@@ -226,6 +244,62 @@ export default function App() {
         element={
           <RequireAuth>
             <CertificatePage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/duel"
+        element={
+          <RequireAuth>
+            <DuelLobbyPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/duel/:puzzleId"
+        element={
+          <RequireAuth>
+            <DuelPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/levels/logic-1"
+        element={
+          <RequireAuth>
+            <BugHuntPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/levels/logic-2"
+        element={
+          <RequireAuth>
+            <PredictOutputPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/levels/logic-3"
+        element={
+          <RequireAuth>
+            <CodeSortPage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/levels/logic-4"
+        element={
+          <RequireAuth>
+            <PatternPuzzlePage />
+          </RequireAuth>
+        }
+      />
+      <Route
+        path="/levels/logic-5"
+        element={
+          <RequireAuth>
+            <LogicGatePage />
           </RequireAuth>
         }
       />
@@ -262,6 +336,14 @@ export default function App() {
           }
         />
       ))}
+      <Route
+        path={`/levels/${htmlOpenLesson.id}`}
+        element={
+          <RequireAuth>
+            <OpenLessonPage level={htmlOpenLesson} />
+          </RequireAuth>
+        }
+      />
       <Route path="/" element={<Navigate to="/map" replace />} />
       <Route path="*" element={<Navigate to="/map" replace />} />
     </Routes>

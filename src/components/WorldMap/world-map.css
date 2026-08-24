@@ -39,15 +39,31 @@
 }
 
 .wing-card {
+  display: block;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 22px;
   position: relative;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s ease;
+}
+
+a.wing-card:hover {
+  border-color: var(--accent-teal);
 }
 
 .wing-card.locked {
   opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.wing-card-cta {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-teal);
 }
 
 .wing-card-head {
@@ -107,41 +123,6 @@
   margin-bottom: 16px;
 }
 
-.level-chip-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.level-chip {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--panel-alt);
-  font-size: 13px;
-  text-decoration: none;
-  color: var(--text);
-}
-
-.level-chip.done {
-  border-color: rgba(45, 212, 191, 0.4);
-  color: var(--accent-teal);
-}
-
-.level-chip.locked-chip {
-  color: var(--text-dim);
-  cursor: not-allowed;
-}
-
-.level-chip .chip-status {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
 .playground-card {
   display: flex;
   align-items: center;
@@ -181,5 +162,48 @@
   font-size: 13px;
   font-weight: 700;
   color: var(--accent-teal);
+  white-space: nowrap;
+}
+
+/* ---------- Code Duel entry card ---------- */
+.duel-entry-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 14px;
+  padding: 20px 22px;
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.12), rgba(251, 191, 36, 0.08));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.duel-entry-card:hover {
+  border-color: var(--accent-red);
+}
+
+.duel-entry-card-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.duel-entry-card h3 {
+  margin: 0 0 4px;
+  font-size: 16px;
+}
+
+.duel-entry-card p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.duel-entry-card-cta {
+  margin-left: auto;
+  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-red);
   white-space: nowrap;
 }
