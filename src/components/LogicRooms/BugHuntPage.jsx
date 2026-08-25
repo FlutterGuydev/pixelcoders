@@ -9,6 +9,7 @@ import { highlightLine } from './syntaxHighlight';
 import { usePlayer } from '../../context/PlayerContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { BADGE_DEFINITIONS } from '../../lib/badges';
+import { nextLogicLevelId } from '../../data/logicLevels';
 import './logic-rooms.css';
 
 const POP_ANIMATION_MS = 650;
@@ -102,15 +103,16 @@ function BugHuntGame({ level }) {
     setWrongClickIndex(null);
   };
 
+  const nextLevelId = nextLogicLevelId(level.id);
+  const nextPath = nextLevelId ? `/levels/${nextLevelId}` : '/tracks/logic';
+
   const handleContinue = () => {
     if (result?.leveledUp) {
       navigate('/level-up', {
-        state: { fromLevel: result.fromLevel, toLevel: result.toLevel, newBadges: result.newBadges },
+        state: { fromLevel: result.fromLevel, toLevel: result.toLevel, newBadges: result.newBadges, nextPath },
       });
-    } else if (result?.newBadges?.length) {
-      navigate('/map', { state: { newBadges: result.newBadges } });
     } else {
-      navigate('/map');
+      navigate(nextPath);
     }
   };
 

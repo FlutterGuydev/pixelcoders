@@ -9,6 +9,7 @@ import HtmlPreview from '../shared/HtmlPreview';
 import { usePlayer } from '../../context/PlayerContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { BADGE_DEFINITIONS } from '../../lib/badges';
+import { nextLogicLevelId } from '../../data/logicLevels';
 
 const DOMINO_STEP_MS = 90;
 const CHIP_LOCK_MS = 350;
@@ -111,15 +112,16 @@ function CodeSortGame({ level }) {
     });
   };
 
+  const nextLevelId = nextLogicLevelId(level.id);
+  const nextPath = nextLevelId ? `/levels/${nextLevelId}` : '/tracks/logic';
+
   const handleContinue = () => {
     if (result?.leveledUp) {
       navigate('/level-up', {
-        state: { fromLevel: result.fromLevel, toLevel: result.toLevel, newBadges: result.newBadges },
+        state: { fromLevel: result.fromLevel, toLevel: result.toLevel, newBadges: result.newBadges, nextPath },
       });
-    } else if (result?.newBadges?.length) {
-      navigate('/map', { state: { newBadges: result.newBadges } });
     } else {
-      navigate('/map');
+      navigate(nextPath);
     }
   };
 

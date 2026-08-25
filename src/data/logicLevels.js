@@ -63,3 +63,12 @@ function generateLogicLevels() {
 
 export const LOGIC_LEVELS = generateLogicLevels();
 export const LOGIC_LEVEL_IDS = LOGIC_LEVELS.map((level) => level.id);
+
+// So a finished level can send the player straight into the next one
+// instead of dropping them back at the map — the whole point of a long
+// interleaved path is to keep moving through it.
+export function nextLogicLevelId(currentId) {
+  const idx = LOGIC_LEVEL_IDS.indexOf(currentId);
+  if (idx === -1 || idx === LOGIC_LEVEL_IDS.length - 1) return null;
+  return LOGIC_LEVEL_IDS[idx + 1];
+}

@@ -9,6 +9,7 @@ import { usePlayer } from '../../context/PlayerContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { BADGE_DEFINITIONS } from '../../lib/badges';
 import { evaluateGateCondition, computeGateProgress } from '../../data/levels/logicLevel5';
+import { nextLogicLevelId } from '../../data/logicLevels';
 
 const DOOR_OPEN_MS = 600;
 const HERO_WALK_MS = 600;
@@ -135,15 +136,16 @@ function LogicGateGame({ level }) {
     }
   };
 
+  const nextLevelId = nextLogicLevelId(level.id);
+  const nextPath = nextLevelId ? `/levels/${nextLevelId}` : '/tracks/logic';
+
   const handleContinue = () => {
     if (result?.leveledUp) {
       navigate('/level-up', {
-        state: { fromLevel: result.fromLevel, toLevel: result.toLevel, newBadges: result.newBadges },
+        state: { fromLevel: result.fromLevel, toLevel: result.toLevel, newBadges: result.newBadges, nextPath },
       });
-    } else if (result?.newBadges?.length) {
-      navigate('/map', { state: { newBadges: result.newBadges } });
     } else {
-      navigate('/map');
+      navigate(nextPath);
     }
   };
 

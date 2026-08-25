@@ -9,7 +9,7 @@ export default function LevelUpOverlay() {
   const location = useLocation();
   const navigate = useNavigate();
   const { t, tr } = useLanguage();
-  const { toLevel, newBadges = [] } = location.state || {};
+  const { toLevel, newBadges = [], nextPath } = location.state || {};
 
   useEffect(() => {
     if (!toLevel) navigate('/map', { replace: true });
@@ -35,7 +35,7 @@ export default function LevelUpOverlay() {
         )}
         <button
           className="level-up-continue"
-          onClick={() => navigate('/map', { state: { newBadges } })}
+          onClick={() => (nextPath ? navigate(nextPath) : navigate('/map', { state: { newBadges } }))}
         >
           {t('levelUp.continueBtn')}
         </button>
