@@ -8,7 +8,6 @@ import ProgressDots from './ProgressDots';
 import { usePlayer } from '../../context/PlayerContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { BADGE_DEFINITIONS } from '../../lib/badges';
-import { logicLevel4 } from '../../data/levels/logicLevel4';
 
 const GROW_STAGGER_MS = 120;
 const GROW_ANIMATION_MS = 350;
@@ -19,12 +18,11 @@ function Swatch({ size, color, className = '' }) {
   return <span className={`pattern-swatch ${className}`} style={{ width: size, height: size, background: color }} />;
 }
 
-function PatternGame() {
+function PatternGame({ level }) {
   const navigate = useNavigate();
   const { completeLevel } = usePlayer();
   const { tr: siteTr } = useLanguage();
   const { t } = useLogicLanguage();
-  const level = logicLevel4;
   const rounds = level.rounds;
 
   const [roundIndex, setRoundIndex] = useState(0);
@@ -180,10 +178,10 @@ function PatternGame() {
   );
 }
 
-export default function PatternPuzzlePage() {
+export default function PatternPuzzlePage({ level }) {
   return (
     <LogicLanguageProvider>
-      <PatternGame />
+      <PatternGame level={level} />
     </LogicLanguageProvider>
   );
 }

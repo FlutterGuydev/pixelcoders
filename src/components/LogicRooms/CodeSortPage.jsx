@@ -9,7 +9,6 @@ import HtmlPreview from '../shared/HtmlPreview';
 import { usePlayer } from '../../context/PlayerContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { BADGE_DEFINITIONS } from '../../lib/badges';
-import { logicLevel3 } from '../../data/levels/logicLevel3';
 
 const DOMINO_STEP_MS = 90;
 const CHIP_LOCK_MS = 350;
@@ -39,12 +38,11 @@ function PayoffStage({ type, playing }) {
   );
 }
 
-function CodeSortGame() {
+function CodeSortGame({ level }) {
   const navigate = useNavigate();
   const { completeLevel } = usePlayer();
   const { tr: siteTr } = useLanguage();
   const { t } = useLogicLanguage();
-  const level = logicLevel3;
   const rounds = level.rounds;
 
   const [roundIndex, setRoundIndex] = useState(0);
@@ -191,10 +189,10 @@ function CodeSortGame() {
   );
 }
 
-export default function CodeSortPage() {
+export default function CodeSortPage({ level }) {
   return (
     <LogicLanguageProvider>
-      <CodeSortGame />
+      <CodeSortGame level={level} />
     </LogicLanguageProvider>
   );
 }

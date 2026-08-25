@@ -8,14 +8,24 @@ import ProgressDots from './ProgressDots';
 import { usePlayer } from '../../context/PlayerContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { BADGE_DEFINITIONS } from '../../lib/badges';
-import { logicLevel5, evaluateGateCondition, computeGateProgress } from '../../data/levels/logicLevel5';
+import { evaluateGateCondition, computeGateProgress } from '../../data/levels/logicLevel5';
 
 const DOOR_OPEN_MS = 600;
 const HERO_WALK_MS = 600;
 const RING_RADIUS = 30;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
-const RULE_LABEL_KEYS = { and: 'gate.and', or: 'gate.or', combo: 'gate.combo' };
+const RULE_LABEL_KEYS = {
+  and: 'gate.and',
+  or: 'gate.or',
+  xor: 'gate.xor',
+  and3: 'gate.and3',
+  or3: 'gate.or3',
+  combo: 'gate.combo',
+  majority3: 'gate.majority3',
+  xor3: 'gate.xor3',
+};
+const RULE_OP_ICON = { and: '🔗', or: '🔀', xor: '⊕', and3: '🔗', or3: '🔀', majority3: '⚖️', xor3: '⊕' };
 
 function ProgressRing({ percent, complete }) {
   const offset = RING_CIRCUMFERENCE * (1 - percent / 100);
@@ -33,7 +43,7 @@ function ProgressRing({ percent, complete }) {
   );
 }
 
-function RuleDiagram({ ruleType }) {
+function RuleDiagram({ ruleType, leverCount }) {
   if (ruleType === 'combo') {
     return (
       <div className="gate-rule combo">
@@ -49,24 +59,29 @@ function RuleDiagram({ ruleType }) {
       </div>
     );
   }
+
+  const icon = RULE_OP_ICON[ruleType] ?? '🔗';
+  const levers = [];
+  for (let i = 0; i < leverCount; i++) {
+    if (i > 0) levers.push(<span key={`op${i}`} className="gate-rule-op">{icon}</span>);
+    levers.push(<span key={`lv${i}`} className="gate-rule-lever">🕹️</span>);
+  }
+
   return (
     <div className="gate-rule">
-      <span className="gate-rule-lever">🕹️</span>
-      <span className="gate-rule-op">{ruleType === 'and' ? '🔗' : '🔀'}</span>
-      <span className="gate-rule-lever">🕹️</span>
+      {levers}
       <span className="gate-rule-arrow">→</span>
       <span className="gate-rule-lock">🔒</span>
     </div>
   );
 }
 
-function LogicGateGame() {
+function LogicGateGame({ level }) {
   const navigate = useNavigate();
   const { completeLevel } = usePlayer();
   const { tr: siteTr } = useLanguage();
   const { t } = useLogicLanguage();
-  const level = logicLevel5;
-  const rooms = level.rooms;
+  const rooms = level.rounds;
 
   const [roomIndex, setRoomIndex] = useState(0);
   const [levers, setLevers] = useState(() => Array(rooms[0].leverCount).fill(false));
@@ -158,7 +173,7 @@ function LogicGateGame() {
           <div className="lr2-file-tab">{t(RULE_LABEL_KEYS[room.ruleType])}</div>
 
           <div className="gate-room">
-            <RuleDiagram ruleType={room.ruleType} />
+            <RuleDiagram ruleType={room.ruleType} leverCount={room.leverCount} />
 
             <div className="gate-stage">
               <div className="gate-ring-wrap">
@@ -209,10 +224,10 @@ function LogicGateGame() {
   );
 }
 
-export default function LogicGatePage() {
+export default function LogicGatePage({ level }) {
   return (
     <LogicLanguageProvider>
-      <LogicGateGame />
+      <LogicGateGame level={level} />
     </LogicLanguageProvider>
   );
 }

@@ -9,7 +9,6 @@ import Particles from './Particles';
 import { usePlayer } from '../../context/PlayerContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { BADGE_DEFINITIONS } from '../../lib/badges';
-import { logicLevel2 } from '../../data/levels/logicLevel2';
 import './logic-rooms.css';
 
 const RUN_ANIMATION_MS = 500;
@@ -39,12 +38,11 @@ function PredictViewport({ round, phase }) {
   );
 }
 
-function PredictGame() {
+function PredictGame({ level }) {
   const navigate = useNavigate();
   const { completeLevel } = usePlayer();
   const { tr: siteTr } = useLanguage();
   const { t } = useLogicLanguage();
-  const level = logicLevel2;
   const rounds = level.rounds;
 
   const [roundIndex, setRoundIndex] = useState(0);
@@ -222,10 +220,10 @@ function PredictGame() {
   );
 }
 
-export default function PredictOutputPage() {
+export default function PredictOutputPage({ level }) {
   return (
     <LogicLanguageProvider>
-      <PredictGame />
+      <PredictGame level={level} />
     </LogicLanguageProvider>
   );
 }

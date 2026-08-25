@@ -21,6 +21,7 @@ import PredictOutputPage from './components/LogicRooms/PredictOutputPage';
 import CodeSortPage from './components/LogicRooms/CodeSortPage';
 import PatternPuzzlePage from './components/LogicRooms/PatternPuzzlePage';
 import LogicGatePage from './components/LogicRooms/LogicGatePage';
+import { LOGIC_LEVELS } from './data/logicLevels';
 import { htmlLevel1 } from './data/levels/htmlLevel1';
 import { htmlLevel2 } from './data/levels/htmlLevel2';
 import { htmlLevel3 } from './data/levels/htmlLevel3';
@@ -189,6 +190,14 @@ const HTML_LEVELS = [
   { level: htmlLevel3, Viewport: HtmlRoomsViewport },
 ];
 
+const LOGIC_GAME_COMPONENTS = {
+  bug: BugHuntPage,
+  predict: PredictOutputPage,
+  sort: CodeSortPage,
+  pattern: PatternPuzzlePage,
+  gate: LogicGatePage,
+};
+
 function RequireAuth({ children }) {
   const { player } = usePlayer();
   if (!player) return <Navigate to="/login" replace />;
@@ -263,46 +272,20 @@ export default function App() {
           </RequireAuth>
         }
       />
-      <Route
-        path="/levels/logic-1"
-        element={
-          <RequireAuth>
-            <BugHuntPage />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/levels/logic-2"
-        element={
-          <RequireAuth>
-            <PredictOutputPage />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/levels/logic-3"
-        element={
-          <RequireAuth>
-            <CodeSortPage />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/levels/logic-4"
-        element={
-          <RequireAuth>
-            <PatternPuzzlePage />
-          </RequireAuth>
-        }
-      />
-      <Route
-        path="/levels/logic-5"
-        element={
-          <RequireAuth>
-            <LogicGatePage />
-          </RequireAuth>
-        }
-      />
+      {LOGIC_LEVELS.map((level) => {
+        const GameComponent = LOGIC_GAME_COMPONENTS[level.gameType];
+        return (
+          <Route
+            key={level.id}
+            path={`/levels/${level.id}`}
+            element={
+              <RequireAuth>
+                <GameComponent level={level} />
+              </RequireAuth>
+            }
+          />
+        );
+      })}
       {HTML_LEVELS.map(({ level, Viewport }) => (
         <Route
           key={level.id}

@@ -1,3 +1,5 @@
+import { LOGIC_LEVELS, LOGIC_LEVEL_IDS } from './logicLevels';
+
 // Canonical level lists per track. Badges (Gatekeeper / Vault Breaker) key
 // off these full lists, not just the levels that happen to be built yet,
 // so completing today's only HTML level doesn't prematurely award Gatekeeper.
@@ -84,7 +86,7 @@ export const TRACK_LEVEL_IDS = {
     'css-basics-38',
   ],
   css: ['css-1', 'css-2', 'css-3'],
-  logic: ['logic-1', 'logic-2', 'logic-3', 'logic-4', 'logic-5'],
+  logic: LOGIC_LEVEL_IDS,
 };
 
 export const TRACKS = {
@@ -230,15 +232,9 @@ export const TRACKS = {
     subtitle: { ru: 'Логика', uz: 'Mantiq' },
     icon: '🧠',
     description: {
-      ru: 'Пять коротких игр на логику и внимательность — без единой строчки кода.',
-      uz: "Kod yozmasdan — mantiq va diqqat uchun beshta qisqa o'yin.",
+      ru: 'Десятки коротких игр на логику и внимательность — без единой строчки кода.',
+      uz: "Kod yozmasdan — mantiq va diqqat uchun o'nlab qisqa o'yin.",
     },
-    levels: [
-      { id: 'logic-1', title: { ru: 'Охота на баг', uz: 'Xato ovi' }, built: true },
-      { id: 'logic-2', title: { ru: 'Угадай результат', uz: 'Natijani top' }, built: true },
-      { id: 'logic-3', title: { ru: 'Собери порядок', uz: 'Tartibni yig‘' }, built: true },
-      { id: 'logic-4', title: { ru: 'Найди узор', uz: 'Naqshni top' }, built: true },
-      { id: 'logic-5', title: { ru: 'Комната рычагов', uz: 'Richaglar xonasi' }, built: true },
-    ],
+    levels: LOGIC_LEVELS.map((level) => ({ id: level.id, title: level.title, built: true })),
   },
 };

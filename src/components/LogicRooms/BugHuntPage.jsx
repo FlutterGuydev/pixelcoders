@@ -9,7 +9,6 @@ import { highlightLine } from './syntaxHighlight';
 import { usePlayer } from '../../context/PlayerContext';
 import { useLanguage } from '../../i18n/LanguageContext';
 import { BADGE_DEFINITIONS } from '../../lib/badges';
-import { logicLevel1 } from '../../data/levels/logicLevel1';
 import './logic-rooms.css';
 
 const POP_ANIMATION_MS = 650;
@@ -39,12 +38,11 @@ function CodeLine({ line, index, state, onClick }) {
   );
 }
 
-function BugHuntGame() {
+function BugHuntGame({ level }) {
   const navigate = useNavigate();
   const { completeLevel } = usePlayer();
   const { tr: siteTr } = useLanguage();
   const { t } = useLogicLanguage();
-  const level = logicLevel1;
   const rounds = level.rounds;
 
   const [roundIndex, setRoundIndex] = useState(0);
@@ -176,10 +174,10 @@ function BugHuntGame() {
   );
 }
 
-export default function BugHuntPage() {
+export default function BugHuntPage({ level }) {
   return (
     <LogicLanguageProvider>
-      <BugHuntGame />
+      <BugHuntGame level={level} />
     </LogicLanguageProvider>
   );
 }
